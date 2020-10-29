@@ -204,8 +204,8 @@ public protocol TestingImageDataSource: AnyObject {
         setNeedsStatusBarAppearanceUpdate()
         regionOfInterestLabel.layer.masksToBounds = true
         regionOfInterestLabel.layer.cornerRadius = self.regionOfInterestCornerRadius
-        regionOfInterestLabel.layer.borderColor = UIColor.white.cgColor
-        regionOfInterestLabel.layer.borderWidth = 2.0
+        regionOfInterestLabel.layer.borderColor = UIColor.clear.cgColor
+        regionOfInterestLabel.layer.borderWidth = 0.0
         
         if !ScanBaseViewController.isPadAndFormsheet {
             UIDevice.current.setValue(UIDeviceOrientation.portrait.rawValue, forKey: "orientation")

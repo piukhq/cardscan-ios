@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         
         vc.backButtonColor = UIColor.red
         vc.hideBackButtonImage = false
-        vc.backButtonImageToTextDelta = 8.0
+//        vc.backButtonImageToTextDelta = 8.0
         
         vc.backButtonFont = UIFont(name: "Verdana", size: CGFloat(17.0))
         vc.scanCardFont = UIFont(name: "Chalkduster", size: CGFloat(24.0))
@@ -219,7 +219,7 @@ extension ViewController: ScanEvents {
 
 extension ViewController: FullScanStringsDataSource {
     func scanCard() -> String { return "" }
-    func positionCard() -> String { return "New Position Card" }
+    func positionCard() -> String { return "Position your card in the frame so the card number is visible" }
     func backButton() -> String { return " " }
     func skipButton() -> String { return " " }
     func denyPermissionTitle() -> String { return "New Deny" }

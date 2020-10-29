@@ -104,7 +104,7 @@ import UIKit
     @objc public var scanCardFont: UIFont?
     @objc public var positionCardFont: UIFont?
     @objc public var skipButtonFont: UIFont?
-    @objc public var backButtonImageToTextDelta: NSNumber?
+//    @objc public var backButtonImageToTextDelta: NSNumber?
     @objc public var torchButtonImage: UIImage?
     @objc public var cornerColor: UIColor?
     
@@ -219,6 +219,7 @@ import UIKit
     
     func setUiCustomization() {
         backButtonImage = UIImage(named: "close")
+        regionOfInterestLabel.layer.borderWidth = 0.0
         
         if self.hideBackButtonImage {
             self.backButtonImageButton.setImage(nil, for: .normal)
@@ -245,9 +246,9 @@ import UIKit
         if let font = self.skipButtonFont {
             self.skipButton.titleLabel?.font = font
         }
-        if let delta = self.backButtonImageToTextDelta.map({ CGFloat($0.floatValue) }) {
-            self.backButtonImageToTextConstraint.constant += delta
-        }
+//        if let delta = self.backButtonImageToTextDelta.map({ CGFloat($0.floatValue) }) {
+//            self.backButtonImageToTextConstraint.constant += delta
+//        }
         if let image = self.torchButtonImage {
             self.torchButton.setImage(image, for: .normal)
         }
@@ -278,6 +279,13 @@ import UIKit
         self.present(alert, animated: true, completion: nil)
     }
     
+    open func setupRoiViewConstraints() {
+//        regionOfInterestLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+//        regionOfInterestLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+//        regionOfInterestLabel.heightAnchor.constraint(equalTo: regionOfInterestLabel.widthAnchor, multiplier: 1.0 / 1.586).isActive = true
+//        regionOfInterestLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     override public func onCameraPermissionDenied(showedPrompt: Bool) {
         if !showedPrompt {
             self.showDenyAlert()
@@ -291,6 +299,7 @@ import UIKit
         
         self.setStrings()
         self.setUiCustomization()
+        setupRoiViewConstraints()
         self.calledDelegate = false
         
         if self.allowSkip {
