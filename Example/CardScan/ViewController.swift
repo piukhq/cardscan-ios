@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         vc.positionCardFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
         vc.skipButtonFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
         
-        vc.cornerColor = UIColor.blue
+//        vc.cornerColor = UIColor.blue
         vc.torchButtonImage = ScanViewController.cameraImage()
 
         vc.torchButtonSize = CGSize(width: 44, height: 44)

@@ -40,7 +40,7 @@ public protocol TestingImageDataSource: AnyObject {
     var scannedCardImage: UIImage?
     private var isNavigationBarHidden: Bool?
     public var hideNavigationBar: Bool?
-    public var regionOfInterestCornerRadius = CGFloat(10.0)
+    public var regionOfInterestCornerRadius = CGFloat(8.0)
     private var calledOnScannedCard = false
     
     public var mainLoop: MachineLearningLoop? = OcrMainLoop()
