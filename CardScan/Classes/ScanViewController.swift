@@ -104,7 +104,7 @@ import UIKit
     @objc public var scanCardFont: UIFont?
     @objc public var positionCardFont: UIFont?
     @objc public var skipButtonFont: UIFont?
-//    @objc public var backButtonImageToTextDelta: NSNumber?
+    @objc public var backButtonImageToTextDelta: NSNumber?
     @objc public var torchButtonImage: UIImage?
     @objc public var cornerColor: UIColor?
     
@@ -246,9 +246,9 @@ import UIKit
         if let font = self.skipButtonFont {
             self.skipButton.titleLabel?.font = font
         }
-//        if let delta = self.backButtonImageToTextDelta.map({ CGFloat($0.floatValue) }) {
-//            self.backButtonImageToTextConstraint.constant += delta
-//        }
+        if let delta = self.backButtonImageToTextDelta.map({ CGFloat($0.floatValue) }) {
+            self.backButtonImageToTextConstraint.constant += delta
+        }
         if let image = self.torchButtonImage {
             self.torchButton.setImage(image, for: .normal)
         }
