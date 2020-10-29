@@ -218,6 +218,8 @@ import UIKit
     }
     
     func setUiCustomization() {
+        backButtonImage = UIImage(named: "close")
+        
         if self.hideBackButtonImage {
             self.backButtonImageButton.setImage(nil, for: .normal)
             // the image button is 8 from safe area and has a width of 32 the

@@ -74,8 +74,8 @@ open class SimpleScanViewController: ScanBaseViewController {
 
     // our UI components
     public var descriptionText = UILabel()
+    public var topLeftButton = UIButton()
     public var closeButton = UIButton()
-    public var torchButton = UIButton()
     private var debugView: UIImageView?
     public var enableCameraPermissionsButton = UIButton()
     public var enableCameraPermissionsText = UILabel()
@@ -125,7 +125,7 @@ open class SimpleScanViewController: ScanBaseViewController {
         view.backgroundColor = .white
         regionOfInterestCornerRadius = 15.0
 
-        let children: [UIView] = [previewView, blurView, roiView, descriptionText, closeButton, torchButton, numberText, expiryText, nameText, expiryLayoutView, enableCameraPermissionsButton, enableCameraPermissionsText]
+        let children: [UIView] = [previewView, blurView, roiView, descriptionText, topLeftButton, closeButton, numberText, expiryText, nameText, expiryLayoutView, enableCameraPermissionsButton, enableCameraPermissionsText]
         for child in children {
             self.view.addSubview(child)
         }
@@ -134,7 +134,6 @@ open class SimpleScanViewController: ScanBaseViewController {
         setupBlurViewUi()
         setupRoiViewUi()
         setupCloseButtonUi()
-        setupTorchButtonUi()
         setupDescriptionTextUi()
         setupCardDetailsUi()
         setupDenyUi()
@@ -157,20 +156,10 @@ open class SimpleScanViewController: ScanBaseViewController {
     }
     
     open func setupCloseButtonUi() {
-        closeButton.setTitleColor(.white, for: .normal)
-        closeButton.tintColor = .white
-        closeButton.setTitle(SimpleScanViewController.closeButtonString, for: .normal)
-        
+        closeButton.setImage(UIImage(named: "close"), for: .normal)
         closeButton.addTarget(self, action: #selector(cancelButtonPress), for: .touchUpInside)
     }
-    
-    open func setupTorchButtonUi() {
-        torchButton.setTitleColor(.white, for: .normal)
-        torchButton.tintColor = .white
-        torchButton.setTitle(SimpleScanViewController.torchButtonString, for: .normal)
-        
-        torchButton.addTarget(self, action: #selector(torchButtonPress), for: .touchUpInside)
-    }
+
     
     open func setupDescriptionTextUi() {
         descriptionText.text = SimpleScanViewController.descriptionString
@@ -226,7 +215,7 @@ open class SimpleScanViewController: ScanBaseViewController {
     
     // MARK: -Autolayout constraints
     open func setupConstraints() {
-        let children: [UIView] = [previewView, blurView, roiView, descriptionText, closeButton, torchButton, numberText, expiryText, nameText, expiryLayoutView, enableCameraPermissionsButton, enableCameraPermissionsText]
+        let children: [UIView] = [previewView, blurView, roiView, descriptionText, topLeftButton, closeButton, numberText, expiryText, nameText, expiryLayoutView, enableCameraPermissionsButton, enableCameraPermissionsText]
         for child in children {
             child.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -263,14 +252,14 @@ open class SimpleScanViewController: ScanBaseViewController {
     
     open func setupCloseButtonConstraints() {
         let margins = view.layoutMarginsGuide
-        closeButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16.0).isActive = true
-        closeButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        topLeftButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16.0).isActive = true
+        topLeftButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
     }
     
     open func setupTorchButtonConstraints() {
         let margins = view.layoutMarginsGuide
-        torchButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16.0).isActive = true
-        torchButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        closeButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16.0).isActive = true
+        closeButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
     }
     
     open func setupDescriptionTextConstraints() {
@@ -360,7 +349,7 @@ open class SimpleScanViewController: ScanBaseViewController {
     
     override public func onCameraPermissionDenied(showedPrompt: Bool) {
         descriptionText.isHidden = true
-        torchButton.isHidden = true
+        closeButton.isHidden = true
         
         enableCameraPermissionsButton.isHidden = false
         enableCameraPermissionsText.isHidden = false

@@ -194,8 +194,6 @@ public protocol TestingImageDataSource: AnyObject {
     
     public func setupOnViewDidLoad(regionOfInterestLabel: UIView, blurView: BlurView, previewView: PreviewView, cornerView: CornerView?, debugImageView: UIImageView?, torchLevel: Float?) {
         
-        // NICK! NICK!
-        
         self.regionOfInterestLabel = regionOfInterestLabel
         self.blurView = blurView
         self.previewView = previewView
