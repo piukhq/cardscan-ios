@@ -160,7 +160,7 @@ import UIKit
             // handles all orientations correctly.
             viewController.modalPresentationStyle = .formSheet
         } else {
-            viewController.modalPresentationStyle = .fullScreen
+            viewController.modalPresentationStyle = .pageSheet
         }
         
         return viewController
@@ -221,6 +221,7 @@ import UIKit
         backButtonImage = UIImage(named: "close")
         regionOfInterestLabel.layer.borderWidth = 0.0
         positionCardFont = UIFont(name: "NunitoSans-Light", size: 18.0)
+        torchButton.isHidden = true
         
         if self.hideBackButtonImage {
             self.backButtonImageButton.setImage(nil, for: .normal)

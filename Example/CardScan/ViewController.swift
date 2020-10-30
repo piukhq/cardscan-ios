@@ -95,10 +95,9 @@ class ViewController: UIViewController {
 //        vc.skipButtonFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
         
 //        vc.cornerColor = UIColor.blue
-        vc.torchButtonImage = ScanViewController.cameraImage()
+//        vc.torchButtonImage = ScanViewController.cameraImage()
 
-        vc.torchButtonSize = CGSize(width: 44, height: 44)
-        
+//        vc.torchButtonSize = CGSize(width: 44, height: 44)
         self.present(vc, animated: true)
     }
     
