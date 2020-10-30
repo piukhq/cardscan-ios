@@ -71,6 +71,11 @@
 		CBC1F99C7846F308B826FD1C4CB18DFB /* OcrPriorsGen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBCD6C4EC6C925ADBD82A297018F0AA /* OcrPriorsGen.swift */; };
 		CD5B54DFD767FAFC9A1F86F630E670F0 /* CreditCardOcrImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D873AA448DFA2DAD333077D0209C101 /* CreditCardOcrImplementation.swift */; };
 		CD72FEF10B751AE3B66F4A98ADE40FF8 /* SSD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A3C37652424262DD057AF3FF49290A /* SSD.swift */; };
+		CE5217ED254C1F6300B35226 /* LoyaltyScanner in Resources */ = {isa = PBXBuildFile; fileRef = CE5217EC254C1F6300B35226 /* LoyaltyScanner */; };
+		CE5217EE254C1F6300B35226 /* LoyaltyScanner in Resources */ = {isa = PBXBuildFile; fileRef = CE5217EC254C1F6300B35226 /* LoyaltyScanner */; };
+		CE5217EF254C1F6300B35226 /* LoyaltyScanner in Resources */ = {isa = PBXBuildFile; fileRef = CE5217EC254C1F6300B35226 /* LoyaltyScanner */; };
+		CE5217FE254C201300B35226 /* PaymentScannerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5217FD254C201300B35226 /* PaymentScannerWidgetView.swift */; };
+		CE521810254C210600B35226 /* PaymentScannerWidgetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE52180F254C210600B35226 /* PaymentScannerWidgetView.xib */; };
 		D2899A1B16E5F21E48C56DD07EDABF2E /* Pods-CardScan_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9993926088E7489340DBB6602A45C25D /* Pods-CardScan_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D674CA76256E31B08762F49AC56C730D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		D884716F836B43A4E809C800FA5AF70C /* MachineLearningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5BCB4BC161531C0F5B3952E054C7 /* MachineLearningResult.swift */; };
@@ -220,6 +225,9 @@
 		C2A24FCB66A40208EB03EC1C41276E08 /* ModelConfigResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModelConfigResponse.swift; path = CardScan/Classes/ModelConfigResponse.swift; sourceTree = "<group>"; };
 		C57B4E5298C3FFA4C95088DAE0215019 /* Config */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Config; path = CardScan/Assets/Config; sourceTree = "<group>"; };
 		CAF8276675D59E360AEA3F29A2EB2966 /* CSBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CSBundle.swift; path = CardScan/Classes/CSBundle.swift; sourceTree = "<group>"; };
+		CE5217EC254C1F6300B35226 /* LoyaltyScanner */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LoyaltyScanner; sourceTree = "<group>"; };
+		CE5217FD254C201300B35226 /* PaymentScannerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScannerWidgetView.swift; sourceTree = "<group>"; };
+		CE52180F254C210600B35226 /* PaymentScannerWidgetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentScannerWidgetView.xib; sourceTree = "<group>"; };
 		D4D1FC4CCD24A3B367E67104ADAE8E68 /* AppState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = CardScan/Classes/AppState.swift; sourceTree = "<group>"; };
 		D50F91BD762EEDDDD661E649FA0E0E95 /* DetectedAllBoxes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetectedAllBoxes.swift; path = CardScan/Classes/DetectedAllBoxes.swift; sourceTree = "<group>"; };
 		D87B5E76D06D58DAAE6F6A81B2E8C91F /* Pods-CardScan_ExampleUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CardScan_ExampleUITests-umbrella.h"; sourceTree = "<group>"; };
@@ -351,6 +359,9 @@
 				8BC4AA5BDFCB3EA32C1EF2B624AB85BB /* Torch.swift */,
 				19BCC99FFA64607B3F0CD4AF47B76D9D /* UIImage+pixelBuffer.swift */,
 				36090D49369CD35BE2C8B170D78037C9 /* VideoFeed.swift */,
+				CE5217FD254C201300B35226 /* PaymentScannerWidgetView.swift */,
+				CE52180F254C210600B35226 /* PaymentScannerWidgetView.xib */,
+				CE5217EC254C1F6300B35226 /* LoyaltyScanner */,
 				8AF0EB9F5F883E43F315C8704426AD2C /* AppleOcr */,
 				49CD0302580C04B38136F0F01ADAAE0A /* CreditCardOcr */,
 				FB420331A01CDD6E8F6AB4A47D00D9E6 /* Extensions */,
@@ -674,6 +685,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
+				TargetAttributes = {
+					992C704FCECE14F8E1B24C561D450C2E = {
+						LastSwiftMigration = 1210;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -702,6 +718,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5217EF254C1F6300B35226 /* LoyaltyScanner in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +730,7 @@
 				EDA90F12339FEEA4684708EEBE1C8B67 /* CardScan.storyboard in Resources */,
 				24A874AA96CA8359C0D091C713E079E2 /* Config in Resources */,
 				A589873B93F85FDBC4915DC9CE8EE697 /* SSDOcr.mlmodelc in Resources */,
+				CE5217EE254C1F6300B35226 /* LoyaltyScanner in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,6 +745,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5217ED254C1F6300B35226 /* LoyaltyScanner in Resources */,
+				CE521810254C210600B35226 /* PaymentScannerWidgetView.xib in Resources */,
 				7BB9C378058ED64316C54C5145F6E916 /* CardScan.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,6 +829,7 @@
 				346E9C0E0F630015F190ECA08E3A6BCF /* SSDOcrDetect.swift in Sources */,
 				88660B30E9544D5F69138706C1882E5F /* SSDOcrOutputExtensions.swift in Sources */,
 				03033175E003C805AE8991BBDC97F82B /* SSDOutputExtensions.swift in Sources */,
+				CE5217FE254C201300B35226 /* PaymentScannerWidgetView.swift in Sources */,
 				ABC24A064FD2E9A9040B3C7B90E959DD /* Torch.swift in Sources */,
 				38B13892D061CCAD63D7D61D4FA9914E /* UIImage+pixelBuffer.swift in Sources */,
 				E5C452D1D0E9F5C205A1E00C62D991F2 /* VideoFeed.swift in Sources */,
@@ -919,6 +940,7 @@
 			baseConfigurationReference = 741A6EE5ED2F172DC51CCEDE337923EA /* Pods-CardScan_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -942,6 +964,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1277,6 +1301,7 @@
 			baseConfigurationReference = EDF0E5B99E89D61CB52287BEAD563AA4 /* Pods-CardScan_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1300,6 +1325,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

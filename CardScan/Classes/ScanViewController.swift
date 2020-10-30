@@ -89,8 +89,11 @@ import UIKit
 @objc public class ScanViewController: ScanBaseViewController {
     
     struct Constants {
-        static let maskedAreaCornerRadius: CGFloat = 8
         static let guideImageInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        static let blurAlpha: CGFloat = 0.9
+        static let widgetViewTopPadding: CGFloat = 90
+        static let widgetViewLeftRightPadding: CGFloat = 25
+        static let widgetViewHeight: CGFloat = 100
     }
     
     public weak var scanDelegate: ScanDelegate?
@@ -137,13 +140,20 @@ import UIKit
     var denyPermissionTitle = "Need camera access"
     var denyPermissionMessage = "Please enable camera access in your settings to scan your card"
     var denyPermissionButtonText = "OK"
-    
     var calledDelegate = false
+    
     @objc var backgroundBlurEffectView: UIVisualEffectView?
     private lazy var guideImageView: UIImageView = {
         let image = UIImage(named: "scanner_guide")
         let imageView = UIImageView(image: image)
         return imageView
+    }()
+    
+    private lazy var widgetView: PaymentScannerWidgetView = {
+        let widget = PaymentScannerWidgetView()
+        widget.addTarget(self, selector: #selector(enterManually))
+        widget.translatesAutoresizingMaskIntoConstraints = false
+        return widget
     }()
     
     @objc static public func createViewController(withDelegate delegate: ScanDelegate? = nil) -> ScanViewController? {
@@ -174,6 +184,10 @@ import UIKit
         }
         
         return viewController
+    }
+    
+    @objc func enterManually() {
+        
     }
     
     @IBAction func backTextPress() {
@@ -230,12 +244,20 @@ import UIKit
     func setUiCustomization() {
         self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.extraLight))
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
-        backgroundBlurEffectView.alpha = 0.9
+        backgroundBlurEffectView.alpha = Constants.blurAlpha
         backgroundBlurEffectView.frame = self.view.bounds
         self.blurView.addSubview(backgroundBlurEffectView)
         
         guideImageView.frame = regionOfInterestLabel.frame.inset(by: Constants.guideImageInset)
         view.addSubview(guideImageView)
+        view.addSubview(widgetView)
+        NSLayoutConstraint.activate([
+            widgetView.topAnchor.constraint(equalTo: regionOfInterestLabel.bottomAnchor, constant: Constants.widgetViewTopPadding),
+            widgetView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.widgetViewLeftRightPadding),
+            widgetView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.widgetViewLeftRightPadding),
+            widgetView.heightAnchor.constraint(equalToConstant: Constants.widgetViewHeight),
+        ])
+        
         
         backButtonImage = UIImage(named: "close")
         regionOfInterestLabel.layer.borderWidth = 0.0
