@@ -88,6 +88,11 @@ import UIKit
 
 @objc public class ScanViewController: ScanBaseViewController {
     
+    struct Constants {
+        static let maskedAreaCornerRadius: CGFloat = 8
+        static let guideImageInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+    
     public weak var scanDelegate: ScanDelegate?
     public weak var captureOutputDelegate: CaptureOutputDelegate?
     @objc public weak var stringDataSource: ScanStringsDataSource?
@@ -135,6 +140,11 @@ import UIKit
     
     var calledDelegate = false
     @objc var backgroundBlurEffectView: UIVisualEffectView?
+    private lazy var guideImageView: UIImageView = {
+        let image = UIImage(named: "scanner_guide")
+        let imageView = UIImageView(image: image)
+        return imageView
+    }()
     
     @objc static public func createViewController(withDelegate delegate: ScanDelegate? = nil) -> ScanViewController? {
         // use default config
@@ -218,6 +228,15 @@ import UIKit
     }
     
     func setUiCustomization() {
+        self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.extraLight))
+        guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
+        backgroundBlurEffectView.alpha = 0.9
+        backgroundBlurEffectView.frame = self.view.bounds
+        self.blurView.addSubview(backgroundBlurEffectView)
+        
+        guideImageView.frame = regionOfInterestLabel.frame.inset(by: Constants.guideImageInset)
+        view.addSubview(guideImageView)
+        
         backButtonImage = UIImage(named: "close")
         regionOfInterestLabel.layer.borderWidth = 0.0
         positionCardFont = UIFont(name: "NunitoSans-Light", size: 18.0)
@@ -386,7 +405,7 @@ import UIKit
 
 extension ScanViewController {
      @objc func viewOnWillResignActive() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         self.backgroundBlurEffectView = UIVisualEffectView(effect: blurEffect)
 
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else {
@@ -402,6 +421,7 @@ extension ScanViewController {
         if let backgroundBlurEffectView = self.backgroundBlurEffectView {
             backgroundBlurEffectView.removeFromSuperview()
         }
+
         cardNumberLabel.isHidden = true
         expiryLabel.isHidden = true
      }
