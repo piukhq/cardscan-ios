@@ -89,10 +89,10 @@ class ViewController: UIViewController {
         vc.hideBackButtonImage = false
 //        vc.backButtonImageToTextDelta = 8.0
         
-        vc.backButtonFont = UIFont(name: "Verdana", size: CGFloat(17.0))
-        vc.scanCardFont = UIFont(name: "Chalkduster", size: CGFloat(24.0))
-        vc.positionCardFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
-        vc.skipButtonFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
+//        vc.backButtonFont = UIFont(name: "Verdana", size: CGFloat(17.0))
+//        vc.scanCardFont = UIFont(name: "Chalkduster", size: CGFloat(24.0))
+//        vc.positionCardFont = UIFont(name: "NunitoSans-Light", size: 18.0)
+//        vc.skipButtonFont = UIFont(name: "Chalkduster", size: CGFloat(17.0))
         
 //        vc.cornerColor = UIColor.blue
         vc.torchButtonImage = ScanViewController.cameraImage()

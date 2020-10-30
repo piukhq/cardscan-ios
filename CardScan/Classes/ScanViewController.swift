@@ -220,6 +220,7 @@ import UIKit
     func setUiCustomization() {
         backButtonImage = UIImage(named: "close")
         regionOfInterestLabel.layer.borderWidth = 0.0
+        positionCardFont = UIFont(name: "NunitoSans-Light", size: 18.0)
         
         if self.hideBackButtonImage {
             self.backButtonImageButton.setImage(nil, for: .normal)
@@ -237,9 +238,11 @@ import UIKit
         if let font = self.backButtonFont {
             self.backButton.titleLabel?.font = font
         }
-        if let font = self.scanCardFont {
-            self.scanCardLabel.font = font
-        }
+//        if let font = self.scanCardFont {
+//            self.scanCardLabel.font = font
+//        }
+        
+        
         if let font = self.positionCardFont {
             self.positionCardLabel.font = font
         }

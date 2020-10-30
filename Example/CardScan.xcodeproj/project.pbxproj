@@ -17,6 +17,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		73B41523E055D99E9793AF8A /* Pods_CardScan_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A43FD050A04A62A0FD816E1 /* Pods_CardScan_Example.framework */; };
 		950880F29ED9264AD2006804 /* Pods_CardScan_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3DBB25CA374B9D51F0CE80 /* Pods_CardScan_ExampleTests.framework */; };
+		CE5217E0254C077100B35226 /* NunitoSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE5217DF254C076D00B35226 /* NunitoSans-Light.ttf */; };
 		EBA35644249C8E0500CF6194 /* CardScanDD_BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA35643249C8E0500CF6194 /* CardScanDD_BundleTests.swift */; };
 		EBA35646249DDDDC00CF6194 /* CardScanDD_ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA35645249DDDDC00CF6194 /* CardScanDD_ModelTests.swift */; };
 		EBA35648249EC72B00CF6194 /* CardScanDD_OCRTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA35647249EC72B00CF6194 /* CardScanDD_OCRTest.swift */; };
@@ -71,6 +72,7 @@
 		AE3DBB25CA374B9D51F0CE80 /* Pods_CardScan_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardScan_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD8065829BC818B2FD9437C /* Pods-CardScan_ExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardScan_ExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-CardScan_ExampleUITests/Pods-CardScan_ExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF6AC52677A258864ACFF04B /* Pods-CardScan_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardScan_ExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-CardScan_ExampleTests/Pods-CardScan_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE5217DF254C076D00B35226 /* NunitoSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Light.ttf"; sourceTree = "<group>"; };
 		EBA35643249C8E0500CF6194 /* CardScanDD_BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScanDD_BundleTests.swift; sourceTree = "<group>"; };
 		EBA35645249DDDDC00CF6194 /* CardScanDD_ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScanDD_ModelTests.swift; sourceTree = "<group>"; };
 		EBA35647249EC72B00CF6194 /* CardScanDD_OCRTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScanDD_OCRTest.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE5217DF254C076D00B35226 /* NunitoSans-Light.ttf */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -348,6 +351,7 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				CE5217E0254C077100B35226 /* NunitoSans-Light.ttf in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
