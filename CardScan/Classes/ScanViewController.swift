@@ -139,8 +139,8 @@ import UIKit
     public var torchButtonSize: CGSize?
     @IBOutlet weak var cornerView: CornerView!
     var cornerBorderColor = UIColor.clear.cgColor
-    var denyPermissionTitle = "Need camera access"
-    var denyPermissionMessage = "Please enable camera access in your settings to scan your card"
+    var denyPermissionTitle = "Please allow camera access"
+    var denyPermissionMessage = "To scan your cards, you'll need to allow Bink access to your device's camera."
     var denyPermissionButtonText = "OK"
     var calledDelegate = false
     
@@ -238,14 +238,6 @@ import UIKit
         self.positionCardLabel.text = dataSource.positionCard()
         self.skipButton.setTitle(dataSource.skipButton(), for: .normal)
         self.backButton.setTitle(dataSource.backButton(), for: .normal)
-        
-        guard let fullDataSource = dataSource as? FullScanStringsDataSource else {
-            return
-        }
-        
-        self.denyPermissionMessage = fullDataSource.denyPermissionMessage()
-        self.denyPermissionTitle = fullDataSource.denyPermissionTitle()
-        self.denyPermissionButtonText = fullDataSource.denyPermissionButton()
     }
     
     func setUiCustomization() {
