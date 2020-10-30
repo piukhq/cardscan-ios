@@ -60,7 +60,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position your card in the frame so the card number is visible" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJh-NT-quU">
-                                        <rect key="frame" x="25" y="321" width="325" height="60"/>
+                                        <rect key="frame" x="25" y="306" width="325" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="scV-LN-aGg"/>
                                         </constraints>
@@ -114,7 +114,7 @@
                                     <constraint firstAttribute="trailing" secondItem="hHp-1y-YRu" secondAttribute="trailing" id="5BB-GK-2Jx"/>
                                     <constraint firstItem="sYa-ko-OnI" firstAttribute="leading" secondItem="JZr-lh-2mZ" secondAttribute="leading" constant="32" id="5wJ-w5-6tp"/>
                                     <constraint firstItem="aju-0L-PxB" firstAttribute="leading" secondItem="JZr-lh-2mZ" secondAttribute="leading" id="7Zh-v5-Fsa"/>
-                                    <constraint firstItem="iJh-NT-quU" firstAttribute="top" secondItem="NRD-Sd-k9r" secondAttribute="bottom" constant="5" id="Gwd-mC-Yd7"/>
+                                    <constraint firstItem="iJh-NT-quU" firstAttribute="top" secondItem="NRD-Sd-k9r" secondAttribute="bottom" constant="-10" id="Gwd-mC-Yd7"/>
                                     <constraint firstAttribute="trailing" secondItem="mhR-St-yeE" secondAttribute="trailing" constant="32" id="HEa-eN-2z3"/>
                                     <constraint firstItem="mhR-St-yeE" firstAttribute="centerY" secondItem="NRD-Sd-k9r" secondAttribute="centerY" constant="16" id="Hjd-O3-cOS"/>
                                     <constraint firstItem="FbV-Jw-mRi" firstAttribute="bottom" secondItem="NRD-Sd-k9r" secondAttribute="bottom" id="K9e-kV-SDT"/>
