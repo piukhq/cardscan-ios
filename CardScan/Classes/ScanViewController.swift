@@ -151,6 +151,7 @@ import UIKit
     var calledDelegate = false
     
     @objc var backgroundBlurEffectView: UIVisualEffectView?
+    @objc var maskingBlurEffectView: UIVisualEffectView?
     private lazy var guideImageView: UIImageView = {
         let image = UIImage(named: "scanner_guide")
         let imageView = UIImageView(image: image)
@@ -438,22 +439,22 @@ import UIKit
 
 extension ScanViewController {
      @objc func viewOnWillResignActive() {
-//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
-//        self.backgroundBlurEffectView = UIVisualEffectView(effect: blurEffect)
-//
-//        guard let backgroundBlurEffectView = self.backgroundBlurEffectView else {
-//            return
-//        }
-//
-//        backgroundBlurEffectView.frame = self.view.bounds
-//        backgroundBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(backgroundBlurEffectView)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+        self.maskingBlurEffectView = UIVisualEffectView(effect: blurEffect)
+
+        guard let maskingBlurEffectView = self.maskingBlurEffectView else {
+            return
+        }
+
+        maskingBlurEffectView.frame = self.view.bounds
+        maskingBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.addSubview(maskingBlurEffectView)
      }
     
      @objc func viewOnDidBecomeActive() {
-//        if let backgroundBlurEffectView = self.backgroundBlurEffectView {
-//            backgroundBlurEffectView.removeFromSuperview()
-//        }
+        if let maskingBlurEffectView = self.maskingBlurEffectView {
+            maskingBlurEffectView.removeFromSuperview()
+        }
 
         cardNumberLabel.isHidden = true
         expiryLabel.isHidden = true

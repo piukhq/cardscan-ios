@@ -10,17 +10,16 @@ import UIKit
 class PaymentScannerWidgetView: UIView {
     struct Constants {
         static let cornerRadius: CGFloat = 4
+        static let fontSize: CGFloat = 18.0
     }
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var explainerLabel: UILabel!
 
-//    private var state: WidgetState = .enterManually
     private var timer: Timer?
-    public var view: UIView!
-    public var stringDataSource: ScanStringsDataSource?
-    var reuseableId: String {
+    private var view: UIView!
+    private var reuseableId: String {
         return String(describing: type(of: self))
     }
 
@@ -47,17 +46,8 @@ class PaymentScannerWidgetView: UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: self.reuseableId, bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        
         return view
     }
-    
-//    func unrecognizedBarcode() {
-//        error(state: .unrecognizedBarcode)
-//    }
-
-//    func timeout() {
-//        error(state: .timeout)
-//    }
 
     func addTarget(_ target: Any?, selector: Selector?) {
         addGestureRecognizer(UITapGestureRecognizer(target: target, action: selector))
@@ -67,8 +57,8 @@ class PaymentScannerWidgetView: UIView {
         clipsToBounds = true
         layer.cornerRadius = Constants.cornerRadius
 
-        titleLabel.font = UIFont(name: "NunitoSans-ExtraBold", size: 18.0)
-        explainerLabel.font = UIFont(name: "NunitoSans-Light", size: 18.0)
+        titleLabel.font = UIFont(name: "NunitoSans-ExtraBold", size: Constants.fontSize)
+        explainerLabel.font = UIFont(name: "NunitoSans-Light", size: Constants.fontSize)
         explainerLabel.numberOfLines = 2
         imageView.image = UIImage(named: "loyalty_scanner_enter_manually")
 
@@ -84,54 +74,5 @@ class PaymentScannerWidgetView: UIView {
             })
         }
     }
-
-//    private func error(state: WidgetState) {
-//        layer.addBinkAnimation(.shake)
-//        HapticFeedbackUtil.giveFeedback(forType: .notification(type: .error))
-//        setState(state)
-//    }
-
-//    private func setState(_ state: WidgetState) {
-//        titleLabel.text = stringDataSource?.widgetTitle()
-//        explainerLabel.text = stringDataSource?.widgetExplainerText()
-//        imageView.image = UIImage(named: "loyalty_scanner_enter_manually")
-//        self.state = state
-//    }
 }
-
-//extension PaymentScannerWidgetView {
-//    enum WidgetState {
-//        case enterManually
-////        case unrecognizedBarcode
-//        case timeout
-//
-//        var title: String {
-//            switch self {
-//            case .enterManually, .timeout:
-////                guard let dataSource = stringDataSource else { return }
-//                return ""
-////            case .unrecognizedBarcode:
-////                return "loyalty_scanner_widget_title_unrecognized_barcode_text"
-//            }
-//        }
-//
-//        var explainerText: String {
-//            switch self {
-//            case .enterManually, .timeout:
-//                return "loyalty_scanner_widget_explainer_enter_manually_text"
-////            case .unrecognizedBarcode:
-////                return "loyalty_scanner_widget_explainer_unrecognized_barcode_text"
-//            }
-//        }
-//
-//        var imageName: String {
-//            switch self {
-//            case .enterManually:
-//                return "loyalty_scanner_enter_manually"
-//            case .timeout:
-//                return "loyalty_scanner_error"
-//            }
-//        }
-//    }
-//}
 
