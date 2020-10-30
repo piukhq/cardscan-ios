@@ -185,7 +185,7 @@ import UIKit
             // handles all orientations correctly.
             viewController.modalPresentationStyle = .formSheet
         } else {
-            viewController.modalPresentationStyle = .pageSheet
+            viewController.modalPresentationStyle = .fullScreen
         }
         
         return viewController
