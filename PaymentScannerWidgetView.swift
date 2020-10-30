@@ -66,7 +66,7 @@ class PaymentScannerWidgetView: UIView {
         clipsToBounds = true
         layer.cornerRadius = Constants.cornerRadius
 
-        titleLabel.font = UIFont(name: "NunitoSans-Light", size: 18.0)
+        titleLabel.font = UIFont(name: "NunitoSans-ExtraBold", size: 18.0)
         explainerLabel.font = UIFont(name: "NunitoSans-Light", size: 18.0)
         explainerLabel.numberOfLines = 2
         imageView.image = UIImage(named: "loyalty_scanner_enter_manually")
