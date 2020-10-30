@@ -25,6 +25,11 @@ import UIKit
     @objc func positionCard() -> String
     @objc func backButton() -> String
     @objc func skipButton() -> String
+    @objc func widgetTitle() -> String
+    @objc func widgetExplainerText() -> String
+//    @objc func widgetImageNameEnterManually() -> String
+//    @objc func widgetImageNameTimeout() -> String
+
 }
 
 @objc public protocol CaptureOutputDelegate {
@@ -43,6 +48,10 @@ import UIKit
     @objc func denyPermissionTitle() -> String
     @objc func denyPermissionMessage() -> String
     @objc func denyPermissionButton() -> String
+    @objc func widgetTitle() -> String
+    @objc func widgetExplainerText() -> String
+//    @objc func widgetImageNameEnterManually() -> String
+//    @objc func widgetImageNameTimeout() -> String
 }
 
 @objc public class CreditCard: NSObject {
@@ -153,6 +162,8 @@ import UIKit
         let widget = PaymentScannerWidgetView()
         widget.addTarget(self, selector: #selector(enterManually))
         widget.translatesAutoresizingMaskIntoConstraints = false
+        widget.titleLabel.text = stringDataSource?.widgetTitle()
+        widget.explainerLabel.text = stringDataSource?.widgetExplainerText()
         return widget
     }()
     
@@ -187,7 +198,9 @@ import UIKit
     }
     
     @objc func enterManually() {
-        
+        self.cancelScan()
+        self.calledDelegate = true
+        self.scanDelegate?.userDidSkip(self)
     }
     
     @IBAction func backTextPress() {
@@ -427,22 +440,22 @@ import UIKit
 
 extension ScanViewController {
      @objc func viewOnWillResignActive() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
-        self.backgroundBlurEffectView = UIVisualEffectView(effect: blurEffect)
-
-        guard let backgroundBlurEffectView = self.backgroundBlurEffectView else {
-            return
-        }
-
-        backgroundBlurEffectView.frame = self.view.bounds
-        backgroundBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.view.addSubview(backgroundBlurEffectView)
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+//        self.backgroundBlurEffectView = UIVisualEffectView(effect: blurEffect)
+//
+//        guard let backgroundBlurEffectView = self.backgroundBlurEffectView else {
+//            return
+//        }
+//
+//        backgroundBlurEffectView.frame = self.view.bounds
+//        backgroundBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.addSubview(backgroundBlurEffectView)
      }
     
      @objc func viewOnDidBecomeActive() {
-        if let backgroundBlurEffectView = self.backgroundBlurEffectView {
-            backgroundBlurEffectView.removeFromSuperview()
-        }
+//        if let backgroundBlurEffectView = self.backgroundBlurEffectView {
+//            backgroundBlurEffectView.removeFromSuperview()
+//        }
 
         cardNumberLabel.isHidden = true
         expiryLabel.isHidden = true

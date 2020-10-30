@@ -63,6 +63,8 @@ extension ModalScanViewController: ScanDelegate {
 }
 
 extension ModalScanViewController: ScanStringsDataSource {
+    func widgetTitle() -> String { return "Enter Manually" }
+    func widgetExplainerText() -> String { return "You can also type in the card details yourself" }
     func scanCard() -> String { return "Scan Card Title" }
     func positionCard() -> String { return "Card Positioning Description" }
     func backButton() -> String { return "" }

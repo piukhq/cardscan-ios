@@ -217,10 +217,13 @@ extension ViewController: ScanEvents {
 }
 
 extension ViewController: FullScanStringsDataSource {
+    func widgetTitle() -> String { return "Enter Manually" }
+    func widgetExplainerText() -> String { return "You can also type in the card details yourself" }
     func scanCard() -> String { return "" }
     func positionCard() -> String { return "Position your card in the frame so the card number is visible" }
     func backButton() -> String { return " " }
     func skipButton() -> String { return " " }
+    
     func denyPermissionTitle() -> String { return "New Deny" }
     func denyPermissionMessage() -> String { return "New Deny Message" }
     func denyPermissionButton() -> String { return "GO" }

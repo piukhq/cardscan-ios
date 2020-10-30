@@ -13,11 +13,12 @@ class PaymentScannerWidgetView: UIView {
     }
 
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var explainerLabel: UILabel!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var explainerLabel: UILabel!
 
     private var state: WidgetState = .enterManually
     public var view: UIView!
+    public var stringDataSource: ScanStringsDataSource?
     var reuseableId: String {
         return String(describing: type(of: self))
     }
@@ -49,9 +50,9 @@ class PaymentScannerWidgetView: UIView {
         return view
     }
     
-    func unrecognizedBarcode() {
-        error(state: .unrecognizedBarcode)
-    }
+//    func unrecognizedBarcode() {
+//        error(state: .unrecognizedBarcode)
+//    }
 
     func timeout() {
         error(state: .timeout)
@@ -68,36 +69,38 @@ class PaymentScannerWidgetView: UIView {
         titleLabel.font = UIFont(name: "NunitoSans-Light", size: 18.0)
         explainerLabel.font = UIFont(name: "NunitoSans-Light", size: 18.0)
         explainerLabel.numberOfLines = 2
+        imageView.image = UIImage(named: "loyalty_scanner_enter_manually")
 
-        setState(state)
+//        setState(state)
     }
 
     private func error(state: WidgetState) {
 //        layer.addBinkAnimation(.shake)
 //        HapticFeedbackUtil.giveFeedback(forType: .notification(type: .error))
-        setState(state)
+//        setState(state)
     }
 
-    private func setState(_ state: WidgetState) {
-        titleLabel.text = state.title
-        explainerLabel.text = state.explainerText
-        imageView.image = UIImage(named: state.imageName)
-        self.state = state
-    }
+//    private func setState(_ state: WidgetState) {
+//        titleLabel.text = stringDataSource?.widgetTitle()
+//        explainerLabel.text = stringDataSource?.widgetExplainerText()
+//        imageView.image = UIImage(named: "loyalty_scanner_enter_manually")
+//        self.state = state
+//    }
 }
 
 extension PaymentScannerWidgetView {
     enum WidgetState {
         case enterManually
-        case unrecognizedBarcode
+//        case unrecognizedBarcode
         case timeout
 
         var title: String {
             switch self {
             case .enterManually, .timeout:
-                return "loyalty_scanner_widget_title_enter_manually_text"
-            case .unrecognizedBarcode:
-                return "loyalty_scanner_widget_title_unrecognized_barcode_text"
+//                guard let dataSource = stringDataSource else { return }
+                return ""
+//            case .unrecognizedBarcode:
+//                return "loyalty_scanner_widget_title_unrecognized_barcode_text"
             }
         }
 
@@ -105,8 +108,8 @@ extension PaymentScannerWidgetView {
             switch self {
             case .enterManually, .timeout:
                 return "loyalty_scanner_widget_explainer_enter_manually_text"
-            case .unrecognizedBarcode:
-                return "loyalty_scanner_widget_explainer_unrecognized_barcode_text"
+//            case .unrecognizedBarcode:
+//                return "loyalty_scanner_widget_explainer_unrecognized_barcode_text"
             }
         }
 
@@ -114,7 +117,7 @@ extension PaymentScannerWidgetView {
             switch self {
             case .enterManually:
                 return "loyalty_scanner_enter_manually"
-            case .unrecognizedBarcode, .timeout:
+            case .timeout:
                 return "loyalty_scanner_error"
             }
         }
