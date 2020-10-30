@@ -99,7 +99,6 @@ import UIKit
     
     struct Constants {
         static let guideImageInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        static let blurAlpha: CGFloat = 0.9
         static let widgetViewTopPadding: CGFloat = 90
         static let widgetViewLeftRightPadding: CGFloat = 25
         static let widgetViewHeight: CGFloat = 100
@@ -257,7 +256,6 @@ import UIKit
     func setUiCustomization() {
         self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.extraLight))
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
-        backgroundBlurEffectView.alpha = Constants.blurAlpha
         backgroundBlurEffectView.frame = self.view.bounds
         self.blurView.addSubview(backgroundBlurEffectView)
         
