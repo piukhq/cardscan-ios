@@ -27,9 +27,6 @@ import UIKit
     @objc func skipButton() -> String
     @objc func widgetTitle() -> String
     @objc func widgetExplainerText() -> String
-//    @objc func widgetImageNameEnterManually() -> String
-//    @objc func widgetImageNameTimeout() -> String
-
 }
 
 @objc public protocol CaptureOutputDelegate {
@@ -50,8 +47,6 @@ import UIKit
     @objc func denyPermissionButton() -> String
     @objc func widgetTitle() -> String
     @objc func widgetExplainerText() -> String
-//    @objc func widgetImageNameEnterManually() -> String
-//    @objc func widgetImageNameTimeout() -> String
 }
 
 @objc public class CreditCard: NSObject {
@@ -96,7 +91,6 @@ import UIKit
 }
 
 @objc public class ScanViewController: ScanBaseViewController {
-    
     struct Constants {
         static let guideImageInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         static let widgetViewTopPadding: CGFloat = 90
@@ -259,17 +253,16 @@ import UIKit
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
         backgroundBlurEffectView.frame = self.view.bounds
         self.blurView.addSubview(backgroundBlurEffectView)
-        
         guideImageView.frame = regionOfInterestLabel.frame.inset(by: Constants.guideImageInset)
         view.addSubview(guideImageView)
         view.addSubview(widgetView)
+        
         NSLayoutConstraint.activate([
             widgetView.topAnchor.constraint(equalTo: regionOfInterestLabel.bottomAnchor, constant: Constants.widgetViewTopPadding),
             widgetView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.widgetViewLeftRightPadding),
             widgetView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.widgetViewLeftRightPadding),
             widgetView.heightAnchor.constraint(equalToConstant: Constants.widgetViewHeight),
         ])
-        
         
         backButtonImage = UIImage(named: "close")
         regionOfInterestLabel.layer.borderWidth = 0.0
@@ -292,11 +285,6 @@ import UIKit
         if let font = self.backButtonFont {
             self.backButton.titleLabel?.font = font
         }
-//        if let font = self.scanCardFont {
-//            self.scanCardLabel.font = font
-//        }
-        
-        
         if let font = self.positionCardFont {
             self.positionCardLabel.font = font
         }
@@ -309,7 +297,6 @@ import UIKit
         if let image = self.torchButtonImage {
             self.torchButton.setImage(image, for: .normal)
         }
-
         if let size = self.torchButtonSize {
             self.torchButtonWidthConstraint.constant = size.width
             self.torchButtonHeightConstraint.constant = size.height
@@ -336,13 +323,6 @@ import UIKit
         self.present(alert, animated: true, completion: nil)
     }
     
-    open func setupRoiViewConstraints() {
-//        regionOfInterestLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-//        regionOfInterestLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-//        regionOfInterestLabel.heightAnchor.constraint(equalTo: regionOfInterestLabel.widthAnchor, multiplier: 1.0 / 1.586).isActive = true
-//        regionOfInterestLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
-    
     override public func onCameraPermissionDenied(showedPrompt: Bool) {
         if !showedPrompt {
             self.showDenyAlert()
@@ -353,10 +333,8 @@ import UIKit
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setStrings()
         self.setUiCustomization()
-        setupRoiViewConstraints()
         self.calledDelegate = false
         
         if self.allowSkip {
