@@ -64,6 +64,10 @@ class PaymentScannerWidgetView: UIView {
 
         if #available(iOS 10.0, *) {
             timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { [weak self] _ in
+                let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+                notificationFeedbackGenerator.prepare()
+                notificationFeedbackGenerator.notificationOccurred(.error)
+                
                 let animation = CAKeyframeAnimation(keyPath: "transform.scale")
                 animation.timingFunction = CAMediaTimingFunction(name: .linear)
                 animation.duration = 0.6

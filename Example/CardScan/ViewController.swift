@@ -61,7 +61,8 @@ class ViewController: UIViewController {
             print("scan view controller not supported on this hardware")
             return
         }
-        
+//        vc.stringDataSource = self
+
         self.present(vc, animated: true)
     }
     

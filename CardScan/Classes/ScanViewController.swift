@@ -45,8 +45,6 @@ import UIKit
     @objc func denyPermissionTitle() -> String
     @objc func denyPermissionMessage() -> String
     @objc func denyPermissionButton() -> String
-    @objc func widgetTitle() -> String
-    @objc func widgetExplainerText() -> String
 }
 
 @objc public class CreditCard: NSObject {
