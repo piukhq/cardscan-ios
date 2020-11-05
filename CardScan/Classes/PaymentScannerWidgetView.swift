@@ -34,6 +34,11 @@ class PaymentScannerWidgetView: UIView {
         xibSetup()
         configure()
     }
+    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        timer?.invalidate()
+    }
 
     func xibSetup() {
         view = loadViewFromNib()
