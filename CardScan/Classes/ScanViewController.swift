@@ -144,7 +144,10 @@ import Stripe
     var denyPermissionButtonText = "OK"
     var calledDelegate = false
     
-    @objc var backgroundBlurEffectView: UIVisualEffectView?
+    private lazy var blurredView: UIVisualEffectView = {
+        return UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    }()
+
     @objc var maskingBlurEffectView: UIVisualEffectView?
     private lazy var guideImageView: UIImageView = {
         let image = UIImage(named: "scanner_guide")
@@ -243,11 +246,8 @@ import Stripe
     func setUiCustomization() {
         configureForCurrentTheme()
 
-        self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-        guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
-        backgroundBlurEffectView.backgroundColor = .orange
-        backgroundBlurEffectView.frame = self.view.bounds
-        self.blurView.addSubview(backgroundBlurEffectView)
+        blurredView.frame = self.view.bounds
+        self.blurView.addSubview(blurredView)
         view.addSubview(guideImageView)
         view.addSubview(widgetView)
         
@@ -418,7 +418,6 @@ extension ScanViewController {
     @objc func viewOnWillResignActive() {
         let blurEffect = UIBlurEffect(style: .regular)
         self.maskingBlurEffectView = UIVisualEffectView(effect: blurEffect)
-        self.maskingBlurEffectView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
 
         guard let maskingBlurEffectView = self.maskingBlurEffectView else {
             return
@@ -468,7 +467,9 @@ public protocol ThemeDelegate: AnyObject {
 
 extension ScanViewController {
     @objc func configureForCurrentTheme() {
-        backgroundBlurEffectView?.backgroundColor = themeDelegate?.barColor
+        blurredView.backgroundColor = themeDelegate?.barColor
+        positionCardLabel.textColor = themeDelegate?.textColor
+        backButtonImageButton.tintColor = themeDelegate?.textColor
         widgetView.configure(withThemeDelegate: themeDelegate)
     }
 
