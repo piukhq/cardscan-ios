@@ -96,7 +96,7 @@ import Stripe
         static let widgetViewHeight: CGFloat = 100
     }
 
-    public weak var themeDelegate: BinkThemeDelegate?
+    public weak var themeDelegate: ThemeDelegate?
     
     public weak var scanDelegate: ScanDelegate?
     public weak var captureOutputDelegate: CaptureOutputDelegate?
@@ -460,14 +460,16 @@ extension UIView {
 
 // MARK: - BinkApp Theming
 
-public protocol BinkThemeDelegate: AnyObject {
+public protocol ThemeDelegate: AnyObject {
     var backgroundColor: UIColor { get }
+    var barColor: UIColor { get }
     var textColor: UIColor { get }
 }
 
 extension ScanViewController {
     @objc func configureForCurrentTheme() {
-        backgroundBlurEffectView?.backgroundColor = themeDelegate?.backgroundColor
+        backgroundBlurEffectView?.backgroundColor = themeDelegate?.barColor
+        widgetView.configure(withThemeDelegate: themeDelegate)
     }
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
