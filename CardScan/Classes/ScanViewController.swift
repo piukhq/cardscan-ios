@@ -9,7 +9,7 @@ import AVKit
 import UIKit
 
 #if canImport(Stripe)
-    import Stripe
+import Stripe
 #endif
 
 
@@ -95,6 +95,8 @@ import UIKit
         static let widgetViewLeftRightPadding: CGFloat = 25
         static let widgetViewHeight: CGFloat = 100
     }
+
+    public weak var themeDelegate: BinkThemeDelegate?
     
     public weak var scanDelegate: ScanDelegate?
     public weak var captureOutputDelegate: CaptureOutputDelegate?
@@ -175,7 +177,7 @@ import UIKit
         let bundle = CSBundle.bundle()!
         let storyboard = UIStoryboard(name: "CardScan", bundle: bundle)
         let viewController = storyboard.instantiateViewController(withIdentifier: "scanCardViewController") as! ScanViewController
-            viewController.scanDelegate = delegate
+        viewController.scanDelegate = delegate
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             // For the iPad you can use the full screen style but you have to select "requires full screen" in
@@ -239,6 +241,8 @@ import UIKit
     }
     
     func setUiCustomization() {
+        configureForCurrentTheme()
+
         self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
         backgroundBlurEffectView.backgroundColor = .orange
@@ -296,19 +300,19 @@ import UIKit
     func showDenyAlert() {
         let alert = UIAlertController(title: self.denyPermissionTitle, message: self.denyPermissionMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: self.denyPermissionButtonText, style: .default, handler: { action in
-            switch action.style{
-            case .default:
-                self.backButtonPress("")
-                
-            case .cancel:
-                print("cancel")
-                
-            case .destructive:
-                print("destructive")
+                                        switch action.style{
+                                        case .default:
+                                            self.backButtonPress("")
 
-            @unknown default:
-                assertionFailure("UIAlertAction case not handled")
-            }}))
+                                        case .cancel:
+                                            print("cancel")
+
+                                        case .destructive:
+                                            print("destructive")
+
+                                        @unknown default:
+                                            assertionFailure("UIAlertAction case not handled")
+                                        }}))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -391,7 +395,7 @@ import UIKit
             notification.prepare()
             notification.notificationOccurred(.success)
         }
-                
+
         self.calledDelegate = true
         let card = CreditCard(number: number)
         card.expiryMonth = expiryMonth
@@ -411,7 +415,7 @@ import UIKit
 }
 
 extension ScanViewController {
-     @objc func viewOnWillResignActive() {
+    @objc func viewOnWillResignActive() {
         let blurEffect = UIBlurEffect(style: .regular)
         self.maskingBlurEffectView = UIVisualEffectView(effect: blurEffect)
         self.maskingBlurEffectView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
@@ -423,21 +427,23 @@ extension ScanViewController {
         maskingBlurEffectView.frame = self.view.bounds
         maskingBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(maskingBlurEffectView)
-     }
+    }
     
-     @objc func viewOnDidBecomeActive() {
+    @objc func viewOnDidBecomeActive() {
         if let maskingBlurEffectView = self.maskingBlurEffectView {
             maskingBlurEffectView.removeFromSuperview()
         }
 
         cardNumberLabel.isHidden = true
         expiryLabel.isHidden = true
-     }
-     
-     func addBackgroundObservers() {
-         NotificationCenter.default.addObserver(self, selector: #selector(viewOnWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(viewOnDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-     }
+    }
+
+    func addBackgroundObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(viewOnWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewOnDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(configureForCurrentTheme), name: Notification.Name("theme_manager_did_set_theme"), object: nil)
+    }
 }
 
 // https://stackoverflow.com/a/53143736/947883
@@ -454,9 +460,14 @@ extension UIView {
 
 // MARK: - BinkApp Theming
 
+public protocol BinkThemeDelegate: AnyObject {
+    var backgroundColor: UIColor { get }
+    var textColor: UIColor { get }
+}
+
 extension ScanViewController {
-    func configureForCurrentTheme() {
-        backgroundBlurEffectView?.backgroundColor = traitCollection.userInterfaceStyle == .light ? .red : .blue
+    @objc func configureForCurrentTheme() {
+        backgroundBlurEffectView?.backgroundColor = themeDelegate?.backgroundColor
     }
 
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
