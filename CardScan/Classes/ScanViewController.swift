@@ -239,8 +239,9 @@ import UIKit
     }
     
     func setUiCustomization() {
-        self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.extraLight))
+        self.backgroundBlurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         guard let backgroundBlurEffectView = self.backgroundBlurEffectView else { return }
+        backgroundBlurEffectView.backgroundColor = .orange
         backgroundBlurEffectView.frame = self.view.bounds
         self.blurView.addSubview(backgroundBlurEffectView)
         view.addSubview(guideImageView)
@@ -411,8 +412,9 @@ import UIKit
 
 extension ScanViewController {
      @objc func viewOnWillResignActive() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+        let blurEffect = UIBlurEffect(style: .regular)
         self.maskingBlurEffectView = UIVisualEffectView(effect: blurEffect)
+        self.maskingBlurEffectView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
 
         guard let maskingBlurEffectView = self.maskingBlurEffectView else {
             return
@@ -447,5 +449,17 @@ extension UIView {
                        animations: { self.alpha = 1 },
                        completion: { (value: Bool) in
                         if let complete = onCompletion { complete() }})
+    }
+}
+
+// MARK: - BinkApp Theming
+
+extension ScanViewController {
+    func configureForCurrentTheme() {
+        backgroundBlurEffectView?.backgroundColor = traitCollection.userInterfaceStyle == .light ? .red : .blue
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        configureForCurrentTheme()
     }
 }

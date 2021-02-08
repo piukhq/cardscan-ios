@@ -783,7 +783,7 @@
 				DEVELOPMENT_TEAM = HC34M8YE55;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = CardScan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bink.mybank.poc;
@@ -804,7 +804,7 @@
 				DEVELOPMENT_TEAM = HC34M8YE55;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = CardScan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bink.mybank.poc;
