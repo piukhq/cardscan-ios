@@ -58,12 +58,12 @@ class PaymentScannerWidgetView: UIView {
     }
     
     func configure(withThemeDelegate themeDelegate: ThemeDelegate? = nil) {
-        imageView.accessibilityIdentifier = "Widget imageView"
         clipsToBounds = true
         layer.cornerRadius = Constants.cornerRadius
         backgroundColor = themeDelegate?.widgetBackgroundColor
         titleLabel.font = UIFont(name: "NunitoSans-ExtraBold", size: Constants.fontSize)
         titleLabel.textColor = themeDelegate?.widgetTextColor
+        titleLabel.accessibilityIdentifier = "Enter manually"
         explainerLabel.font = UIFont(name: "NunitoSans-Light", size: Constants.fontSize)
         explainerLabel.numberOfLines = 2
         explainerLabel.adjustsFontSizeToFitWidth = true
